@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import "./ExpenseForm.css";
 
 const ExpenseForm = () => {
@@ -11,7 +11,7 @@ const ExpenseForm = () => {
   //     dateField: "",
   //   });
 
-  const getTitleInput = (event) => {
+  const getTitleInput = (event: ChangeEvent<HTMLInputElement>) => {
     updateTitleField(event.target.value);
     // updateInputFields({
     //   ...inputFields,
@@ -22,7 +22,7 @@ const ExpenseForm = () => {
     // });
   };
 
-  const getAmountInput = (event) => {
+  const getAmountInput = (event: ChangeEvent<HTMLInputElement>) => {
     updateAmountField(event.target.value);
     // updateInputFields({
     //   ...inputFields,
@@ -30,7 +30,7 @@ const ExpenseForm = () => {
     // });
   };
 
-  const getDateInput = (event) => {
+  const getDateInput = (event: ChangeEvent<HTMLInputElement>) => {
     updateDateField(event.target.value);
     // updateInputFields({
     //   ...inputFields,
@@ -38,7 +38,7 @@ const ExpenseForm = () => {
     // });
   };
 
-  const sumbitHandler = (event) => {
+  const sumbitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const inputExpense = {
       title: titleField,

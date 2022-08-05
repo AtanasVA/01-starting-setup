@@ -1,8 +1,15 @@
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/Expenses/NewExpense/NewExpense";
 
+type Item = {
+  id: string;
+  title: string;
+  amount: number;
+  date: Date;
+};
+
 function App() {
-  const expenses = [
+  const expenses: Item[] = [
     {
       id: "e1",
       title: "Toilet Paper",
@@ -27,7 +34,7 @@ function App() {
   return (
     <div>
       <NewExpense />
-      <Expenses item={expenses} />
+      <Expenses expenses={expenses} />
     </div>
   );
 }

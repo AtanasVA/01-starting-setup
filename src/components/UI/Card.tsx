@@ -1,6 +1,11 @@
 import "./Card.css";
 
-function Card(props) {
+type Props = {
+  className: string;
+  children: React.ReactNode;
+};
+
+function Card(props: Props) {
   const classes = "card " + props.className;
   return <div className={classes}>{props.children}</div>;
 }

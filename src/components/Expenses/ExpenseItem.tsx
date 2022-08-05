@@ -3,7 +3,7 @@ import "./ExpenseItem.css";
 import ExpenseDate from "./ExpenseDate";
 import Card from "../UI/Card";
 
-function ExpenseItem(props) {
+function ExpenseItem(props: { title: string; date: Date; amount: number }) {
   const [title, setTitle] = useState(props.title);
 
   const clickHandler = () => {
