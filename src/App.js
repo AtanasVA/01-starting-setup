@@ -24,14 +24,14 @@ function App() {
     },
   ];
 
-  const onNewExpense = (newExpense) => {
+  const onNewExpenseRender = (newExpense) => {
     console.log("in App.js");
     console.log(newExpense);
   };
 
   return (
     <div>
-      <NewExpense onNewExpense={onNewExpense} />
+      <NewExpense onNewExpenseRender={onNewExpenseRender} />
       <Expenses item={expenses} />
     </div>
   );
