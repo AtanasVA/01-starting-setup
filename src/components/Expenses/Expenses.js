@@ -10,7 +10,15 @@ function Expenses(props) {
   const showFilteredByYear = (selYear) => {
     console.log(`Show me expenses for ${selYear}`);
     setFilteredYear(selYear);
+    const expenseYears = props.item.filter((expense) => {
+      const yearOfPurchase = expense.date.getYear() + 1900;
+
+      return yearOfPurchase == selYear;
+    });
+
+    console.log(expenseYears);
   };
+
   return (
     <div>
       <Card className="expenses">
@@ -18,8 +26,8 @@ function Expenses(props) {
           selectedYear={filteredYear}
           showFilteredByYear={showFilteredByYear}
         />
-        {props.item.map(({ title, amount, date }) => (
-          <ExpenseItem title={title} amount={amount} date={date} />
+        {props.item.map(({ title, amount, date, id }) => (
+          <ExpenseItem key={id} title={title} amount={amount} date={date} />
         ))}
       </Card>
     </div>
