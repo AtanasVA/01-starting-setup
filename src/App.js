@@ -22,6 +22,12 @@ function App() {
       amount: 450,
       date: new Date(2021, 5, 12),
     },
+    {
+      id: "e5",
+      title: "New Car",
+      amount: 35000,
+      date: new Date(2021, 8, 2),
+    },
   ];
 
   const onNewExpenseRender = (newExpense) => {
