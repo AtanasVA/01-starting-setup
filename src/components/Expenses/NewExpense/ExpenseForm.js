@@ -82,6 +82,7 @@ const ExpenseForm = ({ onNewExpense }) => {
       </div>
       <div className="new-expense__actions">
         <button type="submit">Submit Expense</button>
+        <button type="reset">Reset Expense</button>
       </div>
     </form>
   );
