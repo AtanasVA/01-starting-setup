@@ -14,7 +14,12 @@ function Expenses(props) {
   const expenseYears = props.item.filter((expense) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
-  console.log(expenseYears);
+  let ifItemsExist = <p>No expenses found</p>;
+  if (expenseYears.length > 0) {
+    ifItemsExist = expenseYears.map(({ title, amount, date, id }) => (
+      <ExpenseItem key={id} title={title} amount={amount} date={date} />
+    ));
+  }
 
   return (
     <div>
@@ -23,9 +28,7 @@ function Expenses(props) {
           selectedYear={filteredYear}
           showFilteredByYear={showFilteredByYear}
         />
-        {expenseYears.map(({ title, amount, date, id }) => (
-          <ExpenseItem key={id} title={title} amount={amount} date={date} />
-        ))}
+        {ifItemsExist}
       </Card>
     </div>
   );
