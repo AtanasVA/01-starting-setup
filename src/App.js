@@ -24,8 +24,8 @@ const DUMMY_DATA = [
   },
   {
     id: "e5",
-    title: "New Car",
-    amount: 35000,
+    title: "New TV",
+    amount: 1500,
     date: new Date(2021, 8, 2),
   },
 ];
