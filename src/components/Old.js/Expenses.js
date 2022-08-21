@@ -5,25 +5,14 @@ import ExpenseFilter from "./ExpenseFilter";
 import ExpenseList from "./ExpenseList";
 import ExpensesChart from "./ExpensesChart";
 
-export type Expense = {
-  id: string;
-  title: string;
-  amount: number;
-  date: Date;
-};
-
-type Property = {
-  item: Expense[];
-};
-
-function Expenses(props: Property) {
+function Expenses(props) {
   const [filteredYear, setFilteredYear] = useState("2022");
 
-  const showFilteredByYear = (selYear: string) => {
+  const showFilteredByYear = (selYear) => {
     setFilteredYear(selYear);
   };
 
-  const expenseYears = props.item.filter((expense: Expense) => {
+  const expenseYears = props.item.filter((expense) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
 

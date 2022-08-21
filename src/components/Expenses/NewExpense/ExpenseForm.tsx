@@ -1,55 +1,45 @@
 import { ChangeEvent, useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = () => {
+export type ExpenseObj = { title: string; amount: number; date: Date };
+
+type ExpenseFormPropsType = (obj: ExpenseObj) => void;
+type onHide = () => void;
+
+type ExpenseForms = {
+  onNewExpense: ExpenseFormPropsType;
+  onHide: onHide;
+};
+const ExpenseForm = ({ onNewExpense, onHide }: ExpenseForms) => {
   const [titleField, updateTitleField] = useState("");
-  const [amountField, updateAmountField] = useState("");
+  const [amountField, updateAmountField] = useState<number>();
   const [dateField, updateDateField] = useState("");
-  //   const [inputFields, updateInputFields] = useState({
-  //     titleField: "",
-  //     amountField: "",
-  //     dateField: "",
-  //   });
 
   const getTitleInput = (event: ChangeEvent<HTMLInputElement>) => {
     updateTitleField(event.target.value);
-    // updateInputFields({
-    //   ...inputFields,
-    //   titleField: event.target.value,
-    // });
-    // updateInputFields((inputFields) => {
-    //   return { ...inputFields, titleField: event.target.value }; // <- if you need to keep the original state of all elements
-    // });
   };
 
   const getAmountInput = (event: ChangeEvent<HTMLInputElement>) => {
-    updateAmountField(event.target.value);
-    // updateInputFields({
-    //   ...inputFields,
-    //   amountField: event.target.value,
-    // });
+    updateAmountField(Number(event.target.value));
   };
 
   const getDateInput = (event: ChangeEvent<HTMLInputElement>) => {
     updateDateField(event.target.value);
-    // updateInputFields({
-    //   ...inputFields,
-    //   dateField: event.target.value,
-    // });
   };
 
   const sumbitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const inputExpense = {
       title: titleField,
-      amount: amountField,
+      amount: Number(amountField),
       date: new Date(dateField),
     };
-    console.log(inputExpense);
 
+    onNewExpense(inputExpense);
     updateTitleField("");
-    updateAmountField("");
+    updateAmountField(0);
     updateDateField("");
+    onHide();
   };
 
   return (
@@ -82,9 +72,9 @@ const ExpenseForm = () => {
       </div>
       <div className="new-expense__actions">
         <button type="submit">Submit Expense</button>
+        <button onClick={onHide}>Hide</button>
       </div>
     </form>
   );
 };
-
 export default ExpenseForm;

@@ -1,11 +1,38 @@
-import React from "react";
-import ExpenseForm from "./ExpenseForm";
+import React, { useState } from "react";
+import ExpenseForm, { ExpenseObj } from "./ExpenseForm";
 import "./NewExpense.css";
+import { Expense } from "../Expenses";
 
-const NewExpense = () => {
+type PropExpense = (newExpense: Expense) => void;
+
+type PropType = {
+  onNewExpenseRender: PropExpense;
+};
+
+const NewExpense = ({ onNewExpenseRender }: PropType) => {
+  const [displayExpenseForm, updateDisplayExpenseForm] = useState(false);
+  const onNewExpense = (expenseObj: ExpenseObj) => {
+    const newExpense = {
+      ...expenseObj,
+      id: Math.random().toString(),
+    };
+    onNewExpenseRender(newExpense);
+  };
+
+  const onClick = () => {
+    displayExpenseForm
+      ? updateDisplayExpenseForm(false)
+      : updateDisplayExpenseForm(true);
+  };
+
   return (
     <div className="new-expense">
-      <ExpenseForm />
+      {!displayExpenseForm && (
+        <button onClick={onClick}>Add New Expense</button>
+      )}
+      {displayExpenseForm && (
+        <ExpenseForm onNewExpense={onNewExpense} onHide={onClick} />
+      )}
     </div>
   );
 };
