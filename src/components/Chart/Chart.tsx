@@ -1,6 +1,5 @@
 import "./Chart.css";
 import ChartBar from "./ChartBar";
-// import { ChartProps } from "./ChartBar";
 
 type BarData = { label: string; value: number }[];
 

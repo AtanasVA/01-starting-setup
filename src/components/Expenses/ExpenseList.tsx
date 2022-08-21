@@ -1,4 +1,3 @@
-import React from "react";
 import "./ExpenseList.css";
 import ExpenseItem from "./ExpenseItem";
 import { Expense } from "./Expenses";
