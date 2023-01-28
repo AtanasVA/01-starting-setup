@@ -1,12 +1,12 @@
 import React from "react";
 import "./ExpenseList.css";
 import ExpenseItem from "./ExpenseItem";
+import { expenseData } from "../../App";
 
-const ExpenseList = (props) => {
+const ExpenseList = (props: { expenseYears: expenseData[] }) => {
   if (props.expenseYears.length === 0) {
     return <h2 className="expenses-list__fallback">No expenses found</h2>;
   }
-
   return (
     <ul className="expenses-list">
       {props.expenseYears.map(({ title, amount, date, id }) => (

@@ -1,10 +1,16 @@
 import React, { useState } from "react";
+import { expenseData } from "../../../App";
 import ExpenseForm from "./ExpenseForm";
 import "./NewExpense.css";
 
-const NewExpense = ({ onNewExpenseRender }) => {
-  const [displayExpenseForm, updateDisplayExpenseForm] = useState(false);
-  const onNewExpense = (expenseObj) => {
+const NewExpense = ({
+  onNewExpenseRender,
+}: {
+  onNewExpenseRender: (arg: expenseData) => void;
+}) => {
+  const [displayExpenseForm, updateDisplayExpenseForm] =
+    useState<boolean>(false);
+  const onNewExpense = (expenseObj: expenseData) => {
     const newExpense = {
       ...expenseObj,
       id: Math.random().toString(),

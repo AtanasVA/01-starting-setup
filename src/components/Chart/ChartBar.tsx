@@ -1,9 +1,14 @@
 import React from "react";
 import "./ChartBar.css";
 
-const ChartBar = (props) => {
-  let fillAmount = "0%";
+type chartFields = {
+  label: string;
+  maxValue: number;
+  value: number;
+};
 
+const ChartBar = (props: chartFields) => {
+  let fillAmount = "0%";
   if (props.maxValue > 0) {
     fillAmount = Math.round((props.value / props.maxValue) * 100) + "%";
   }

@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/Expenses/NewExpense/NewExpense";
 
+export type expenseData = {
+  id?: string;
+  title: string;
+  amount: number;
+  date: Date;
+};
+
 const DUMMY_DATA = [
   {
     id: "e1",
@@ -30,9 +37,9 @@ const DUMMY_DATA = [
   },
 ];
 function App() {
-  const [expenses, setExpenses] = useState(DUMMY_DATA);
+  const [expenses, setExpenses] = useState<expenseData[]>(DUMMY_DATA);
 
-  const onNewExpenseRender = (newExpense) => {
+  const onNewExpenseRender = (newExpense: expenseData) => {
     setExpenses((expense) => {
       return [newExpense, ...expense];
     });

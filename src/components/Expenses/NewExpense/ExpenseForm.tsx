@@ -1,28 +1,35 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, FormEvent, useState } from "react";
+import { expenseData } from "../../../App";
 import "./ExpenseForm.css";
 
-const ExpenseForm = ({ onNewExpense, onHide }) => {
-  const [titleField, updateTitleField] = useState("");
-  const [amountField, updateAmountField] = useState("");
-  const [dateField, updateDateField] = useState("");
+const ExpenseForm = ({
+  onNewExpense,
+  onHide,
+}: {
+  onNewExpense: (arg: expenseData) => void;
+  onHide: () => void;
+}) => {
+  const [titleField, updateTitleField] = useState<string>("");
+  const [amountField, updateAmountField] = useState<string>("");
+  const [dateField, updateDateField] = useState<string>("");
 
-  const getTitleInput = (event) => {
+  const getTitleInput = (event: ChangeEvent<HTMLInputElement>) => {
     updateTitleField(event.target.value);
   };
 
-  const getAmountInput = (event) => {
+  const getAmountInput = (event: ChangeEvent<HTMLInputElement>) => {
     updateAmountField(event.target.value);
   };
 
-  const getDateInput = (event) => {
+  const getDateInput = (event: ChangeEvent<HTMLInputElement>) => {
     updateDateField(event.target.value);
   };
 
-  const sumbitHandler = (event) => {
+  const sumbitHandler = (event: FormEvent) => {
     event.preventDefault();
     const inputExpense = {
       title: titleField,
-      amount: amountField,
+      amount: amountField as unknown as number,
       date: new Date(dateField),
     };
 
