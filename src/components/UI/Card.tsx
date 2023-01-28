@@ -1,9 +1,9 @@
 import "./Card.css";
-type classProps = {
+type ClassProps = {
   className: string;
   children: JSX.Element[];
 };
-const Card: React.FC<classProps> = (props) => {
+const Card: React.FC<ClassProps> = (props) => {
   const classes = "card " + props.className;
   return <div className={classes}>{props.children}</div>;
 };

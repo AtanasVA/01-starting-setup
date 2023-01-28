@@ -4,16 +4,20 @@ import Card from "../UI/Card";
 import ExpenseFilter from "./ExpenseFilter";
 import ExpenseList from "./ExpenseList";
 import ExpensesChart from "./ExpensesChart";
-import { expenseData } from "../../App";
+import { ExpenseData } from "../../App";
 
-function Expenses(props: { item: expenseData[] }) {
+type ItemProp = {
+  items: ExpenseData[];
+};
+
+function Expenses({ items }: ItemProp) {
   const [filteredYear, setFilteredYear] = useState<string>("2022");
 
   const showFilteredByYear = (selYear: string) => {
     setFilteredYear(selYear);
   };
 
-  const expenseYears = props.item.filter((expense: expenseData) => {
+  const expenseYears = items.filter((expense) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
 

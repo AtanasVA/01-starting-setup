@@ -1,16 +1,16 @@
 import React from "react";
 import "./ChartBar.css";
 
-type chartFields = {
+type ChartFields = {
   label: string;
   maxValue: number;
   value: number;
 };
 
-const ChartBar = (props: chartFields) => {
+const ChartBar = ({ maxValue, value, label }: ChartFields) => {
   let fillAmount = "0%";
-  if (props.maxValue > 0) {
-    fillAmount = Math.round((props.value / props.maxValue) * 100) + "%";
+  if (maxValue > 0) {
+    fillAmount = Math.round((value / maxValue) * 100) + "%";
   }
 
   return (
@@ -18,7 +18,7 @@ const ChartBar = (props: chartFields) => {
       <div className="chart-bar__inner">
         <div className="chart-bar__fill" style={{ height: fillAmount }}></div>
       </div>
-      <div className="chart-bar__label">{props.label}</div>
+      <div className="chart-bar__label">{label}</div>
     </div>
   );
 };

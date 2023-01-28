@@ -1,12 +1,12 @@
 import React, { ChangeEvent, FormEvent, useState } from "react";
-import { expenseData } from "../../../App";
+import { ExpenseData } from "../../../App";
 import "./ExpenseForm.css";
 
 const ExpenseForm = ({
   onNewExpense,
   onHide,
 }: {
-  onNewExpense: (arg: expenseData) => void;
+  onNewExpense: (arg: ExpenseData) => void;
   onHide: () => void;
 }) => {
   const [titleField, updateTitleField] = useState<string>("");

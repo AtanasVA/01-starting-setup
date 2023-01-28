@@ -1,4 +1,4 @@
-import React from "react";
+import { ChangeEvent } from "react";
 import "./ExpenseFilter.css";
 
 const ExpenseFilter = ({
@@ -8,7 +8,7 @@ const ExpenseFilter = ({
   showFilteredByYear: (arg: string) => void;
   selectedYear: string;
 }) => {
-  const onFilterChange = ({ target }: React.ChangeEvent<HTMLSelectElement>) => {
+  const onFilterChange = ({ target }: ChangeEvent<HTMLSelectElement>) => {
     const selectedYear = target.value;
     showFilteredByYear(selectedYear);
   };

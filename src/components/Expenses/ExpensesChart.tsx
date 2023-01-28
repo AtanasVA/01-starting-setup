@@ -1,8 +1,8 @@
 import React from "react";
-import { expenseData } from "../../App";
+import { ExpenseData } from "../../App";
 import Chart from "../Chart/Chart";
 
-const ExpensesChart = (props: { expensesData: expenseData[] }) => {
+const ExpensesChart = (props: { expensesData: ExpenseData[] }) => {
   const expensesData = [
     { label: "Jan", value: 0 },
     { label: "Feb", value: 0 },
@@ -24,7 +24,7 @@ const ExpensesChart = (props: { expensesData: expenseData[] }) => {
   }
   return (
     <div>
-      <Chart dataValue={expensesData} />
+      <Chart dataValues={expensesData} />
     </div>
   );
 };

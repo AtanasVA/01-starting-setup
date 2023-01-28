@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/Expenses/NewExpense/NewExpense";
 
-export type expenseData = {
+export type ExpenseData = {
   id?: string;
   title: string;
   amount: number;
@@ -37,9 +37,9 @@ const DUMMY_DATA = [
   },
 ];
 function App() {
-  const [expenses, setExpenses] = useState<expenseData[]>(DUMMY_DATA);
+  const [expenses, setExpenses] = useState<ExpenseData[]>(DUMMY_DATA);
 
-  const onNewExpenseRender = (newExpense: expenseData) => {
+  const onNewExpenseRender = (newExpense: ExpenseData) => {
     setExpenses((expense) => {
       return [newExpense, ...expense];
     });
@@ -48,7 +48,7 @@ function App() {
   return (
     <div>
       <NewExpense onNewExpenseRender={onNewExpenseRender} />
-      <Expenses item={expenses} />
+      <Expenses items={expenses} />
     </div>
   );
 }

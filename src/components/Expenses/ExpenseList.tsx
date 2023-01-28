@@ -1,9 +1,9 @@
 import React from "react";
 import "./ExpenseList.css";
 import ExpenseItem from "./ExpenseItem";
-import { expenseData } from "../../App";
+import { ExpenseData } from "../../App";
 
-const ExpenseList = (props: { expenseYears: expenseData[] }) => {
+const ExpenseList = (props: { expenseYears: ExpenseData[] }) => {
   if (props.expenseYears.length === 0) {
     return <h2 className="expenses-list__fallback">No expenses found</h2>;
   }
