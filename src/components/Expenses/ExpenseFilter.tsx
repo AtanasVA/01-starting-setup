@@ -1,14 +1,21 @@
 import React from "react";
 import "./ExpenseFilter.css";
 
-type PropsType = {
+type ExpenseFilterProps = {
   selectedYear: string;
   showFilteredByYear: (selectedYear: string) => void;
 };
 
-const ExpenseFilter = ({ showFilteredByYear, selectedYear }: PropsType) => {
-  const onFilterChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedYear = e.currentTarget.value;
+const ExpenseFilter = ({
+  showFilteredByYear,
+  selectedYear,
+}: ExpenseFilterProps) => {
+  const onFilterChange = ({
+    currentTarget,
+  }: {
+    currentTarget: HTMLSelectElement;
+  }) => {
+    const selectedYear = currentTarget.value;
     showFilteredByYear(selectedYear);
   };
   return (

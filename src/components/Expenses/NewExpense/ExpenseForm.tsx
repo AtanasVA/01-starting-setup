@@ -3,14 +3,12 @@ import "./ExpenseForm.css";
 
 export type ExpenseObj = { title: string; amount: number; date: Date };
 
-type ExpenseFormPropsType = (obj: ExpenseObj) => void;
-type onHide = () => void;
-
-type ExpenseForms = {
-  onNewExpense: ExpenseFormPropsType;
-  onHide: onHide;
+type ExpenseFormProps = {
+  onNewExpense: (obj: ExpenseObj) => void;
+  onHide: () => void;
 };
-const ExpenseForm = ({ onNewExpense, onHide }: ExpenseForms) => {
+
+const ExpenseForm = ({ onNewExpense, onHide }: ExpenseFormProps) => {
   const [titleField, updateTitleField] = useState("");
   const [amountField, updateAmountField] = useState<number>();
   const [dateField, updateDateField] = useState("");

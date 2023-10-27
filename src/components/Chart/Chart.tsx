@@ -1,23 +1,25 @@
 import "./Chart.css";
 import ChartBar from "./ChartBar";
 
-type BarData = { label: string; value: number }[];
+type SingleExpense = { label: string; value: number };
 
-type MonthBars = {
+type BarData = SingleExpense[];
+
+type ChartProps = {
   dataValue: BarData;
 };
 
-const Chart = (props: MonthBars) => {
-  const numValues = props.dataValue.map((expense: any) => expense.value);
+const Chart = ({ dataValue }: ChartProps) => {
+  const numValues = dataValue.map((expense: SingleExpense) => expense.value);
   const totalMax = Math.max(...numValues);
   return (
     <div className="chart">
-      {props.dataValue.map((dataValue: any) => {
+      {dataValue.map((expense: SingleExpense) => {
         return (
           <ChartBar
-            key={dataValue.label}
-            label={dataValue.label}
-            value={dataValue.value}
+            key={expense.label}
+            label={expense.label}
+            value={expense.value}
             maxValue={totalMax}
           />
         );

@@ -5,33 +5,33 @@ export type ExpenseChartType = {
   amount: number;
 }[];
 
-type ExpenseDataType = {
+type ExpensesChartProps = {
   expensesData: ExpenseChartType;
 };
 
-const ExpensesChart = (props: ExpenseDataType) => {
-  const expensesData = [
-    { label: "Jan", value: 0 },
-    { label: "Feb", value: 0 },
-    { label: "Mar", value: 0 },
-    { label: "Apr", value: 0 },
-    { label: "May", value: 0 },
-    { label: "Jun", value: 0 },
-    { label: "Jul", value: 0 },
-    { label: "Aug", value: 0 },
-    { label: "Sep", value: 0 },
-    { label: "Oct", value: 0 },
-    { label: "Nov", value: 0 },
-    { label: "Dec", value: 0 },
-  ];
+const expensesDataTemplate = [
+  { label: "Jan", value: 0 },
+  { label: "Feb", value: 0 },
+  { label: "Mar", value: 0 },
+  { label: "Apr", value: 0 },
+  { label: "May", value: 0 },
+  { label: "Jun", value: 0 },
+  { label: "Jul", value: 0 },
+  { label: "Aug", value: 0 },
+  { label: "Sep", value: 0 },
+  { label: "Oct", value: 0 },
+  { label: "Nov", value: 0 },
+  { label: "Dec", value: 0 },
+];
 
-  for (const expense of props.expensesData) {
-    const expenseMonth = expense.date.getMonth();
-    expensesData[expenseMonth].value += expense.amount;
-  }
+const ExpensesChart = ({ expensesData }: ExpensesChartProps) => {
+  expensesData.forEach((expense) => {
+    expensesDataTemplate[expense.date.getMonth()].value += expense.amount;
+  });
+
   return (
     <div>
-      <Chart dataValue={expensesData} />
+      <Chart dataValue={expensesDataTemplate} />
     </div>
   );
 };

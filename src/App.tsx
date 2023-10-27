@@ -30,7 +30,7 @@ const DUMMY_DATA = [
     date: new Date(2021, 8, 2),
   },
 ];
-function App() {
+const App = () => {
   const [expenses, setExpenses] = useState(DUMMY_DATA);
 
   const onNewExpenseRender = (newExpense: Expense) => {
@@ -45,6 +45,6 @@ function App() {
       <Expenses item={expenses} />
     </div>
   );
-}
+};
 
 export default App;

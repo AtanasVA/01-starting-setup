@@ -5,11 +5,11 @@ import { Expense } from "../Expenses";
 
 type PropExpense = (newExpense: Expense) => void;
 
-type PropType = {
+type NewExpenseProps = {
   onNewExpenseRender: PropExpense;
 };
 
-const NewExpense = ({ onNewExpenseRender }: PropType) => {
+const NewExpense = ({ onNewExpenseRender }: NewExpenseProps) => {
   const [displayExpenseForm, updateDisplayExpenseForm] = useState(false);
   const onNewExpense = (expenseObj: ExpenseObj) => {
     const newExpense = {
