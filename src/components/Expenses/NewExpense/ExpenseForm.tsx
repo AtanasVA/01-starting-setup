@@ -1,34 +1,41 @@
-import React, { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import "./ExpenseForm.css";
 
-const ExpenseForm = ({ onNewExpense, onHide }) => {
+export type ExpenseObj = { title: string; amount: number; date: Date };
+
+type ExpenseFormProps = {
+  onNewExpense: (obj: ExpenseObj) => void;
+  onHide: () => void;
+};
+
+const ExpenseForm = ({ onNewExpense, onHide }: ExpenseFormProps) => {
   const [titleField, updateTitleField] = useState("");
-  const [amountField, updateAmountField] = useState("");
+  const [amountField, updateAmountField] = useState<number>();
   const [dateField, updateDateField] = useState("");
 
-  const getTitleInput = (event) => {
+  const getTitleInput = (event: ChangeEvent<HTMLInputElement>) => {
     updateTitleField(event.target.value);
   };
 
-  const getAmountInput = (event) => {
-    updateAmountField(event.target.value);
+  const getAmountInput = (event: ChangeEvent<HTMLInputElement>) => {
+    updateAmountField(Number(event.target.value));
   };
 
-  const getDateInput = (event) => {
+  const getDateInput = (event: ChangeEvent<HTMLInputElement>) => {
     updateDateField(event.target.value);
   };
 
-  const sumbitHandler = (event) => {
+  const sumbitHandler = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const inputExpense = {
       title: titleField,
-      amount: amountField,
+      amount: Number(amountField),
       date: new Date(dateField),
     };
 
     onNewExpense(inputExpense);
     updateTitleField("");
-    updateAmountField("");
+    updateAmountField(0);
     updateDateField("");
     onHide();
   };

@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/Expenses/NewExpense/NewExpense";
+import { Expense } from "./components/Expenses/Expenses";
 
 const DUMMY_DATA = [
   {
@@ -29,10 +30,10 @@ const DUMMY_DATA = [
     date: new Date(2021, 8, 2),
   },
 ];
-function App() {
+const App = () => {
   const [expenses, setExpenses] = useState(DUMMY_DATA);
 
-  const onNewExpenseRender = (newExpense) => {
+  const onNewExpenseRender = (newExpense: Expense) => {
     setExpenses((expense) => {
       return [newExpense, ...expense];
     });
@@ -44,6 +45,6 @@ function App() {
       <Expenses item={expenses} />
     </div>
   );
-}
+};
 
 export default App;
